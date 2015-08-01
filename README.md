@@ -8,15 +8,6 @@ provided by the [RailsApps Project](http://railsapps.github.io/).
 
 Rails Composer is open source and supported by subscribers. Please join RailsApps to support development of Rails Composer.
 
-Problems? Issues?
------------
-
-Need help? Ask on Stack Overflow with the tag 'railsapps.'
-
-Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
-
-If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include the diagnostics.
 
 Ruby on Rails
 -------------
@@ -30,6 +21,35 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 
 Getting Started
 ---------------
+Project setup
+
+Copy from this drive folder database.yml to config/database.yml 
+
+sudo -u postgres createuser -d -R -P libre_mercado
+
+Complete with root password and when asked for a password set: libre_mercado
+
+ 
+sudo -u postgres createdb -O libre_mercado libre_mercado
+
+Modify config/database.yml and set password to libre_mercado
+
+Run in console
+
+rake db:create:all
+rake db:migrate
+
+
+
+
+
+
+
+
+
+
+
+
 
 Documentation and Support
 -------------------------
