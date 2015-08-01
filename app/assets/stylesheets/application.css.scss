@@ -10,8 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require framework_and_overrides
+ *= require index
+ *= require listings
+ *= require offers
+ *= require scaffolds
  *= require_self
+ *= require overrides
+
+
  */
 
 
@@ -28,4 +35,3 @@ body { padding-top: 60px; }
 
 // And finally bootswatch style itself
 @import "bootswatch/cosmo/bootswatch";
-

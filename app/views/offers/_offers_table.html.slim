@@ -1,21 +1,24 @@
-table
-  thead
-    tr
-      th Description
-      th Price
-      th User
-      th
-      th
-      th
 
-  tbody
-    - offers.each do |offer|
-      tr
-        td = offer.description
-        td = offer.price
-        td = offer.user.email
-        td = link_to 'Show', offer
-        td = link_to 'Aceptar', accept_offer_path(offer), method: 'put'
-        td = link_to 'Rechazar', reject_offer_path(offer), method: 'put'
+  - offers.each do |offer|
+    .col-xs-12.col-sm-6.col-md-3.col-lg-2
+      .panel.panel-default
+        .panel-body
+          .panel-img
+            | FOTO
+        .panel-footer
+          h4
+            = listing.title
+                  td = offer.price
+          h5
+            = 'Usuario:' + offer.user.email
+          h5
+            = 'Precio' + offer.listing
+          td = link_to 'Ver', offer
+          td
+            | |
+          td = link_to 'Editar', edit_offer_path(offer)
+          td
+            | |
+          td = link_to 'Eliminar', offer, data: {:confirm => 'Are you sure?'}, :method => :delete
 br
 = paginate offers
