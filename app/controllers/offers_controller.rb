@@ -40,6 +40,11 @@ class OffersController < ApplicationController
     listing = Listing.find(params[:listing_id])
     UserMailer.new_offer_email(listing.user).deliver_later
 
+    uploader = PictureUploader.new
+    params[:offer][:files].each do |file|
+      Picture.create(picture: file, imageable: @offer)
+    end
+
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
