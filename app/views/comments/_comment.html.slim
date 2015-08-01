@@ -1,0 +1,8 @@
+.media-body
+  h4.media-heading=comment.author.email
+  i= comment.created_at.strftime('%b %d, %Y at %H:%M')
+  p= simple_format comment.body
+  = nested_comments comment.children
+.actions
+  = link_to "Reply", new_polymorphic_path([@commentable, Comment.new], :parent_id => comment)
+= nested_comments comment.children

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :offers do
+    resources :comments
     member do
       put :accept
       put :reject
