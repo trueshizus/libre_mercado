@@ -1,0 +1,27 @@
+h1 Listing offers
+
+table
+  thead
+    tr
+      th Description
+      th Price
+      th User
+      th Listing
+      th
+      th
+      th
+
+  tbody
+    - @offers.each do |offer|
+      tr
+        td = offer.description
+        td = offer.price
+        td = offer.user
+        td = offer.listing
+        td = link_to 'Show', offer
+        td = link_to 'Edit', edit_offer_path(offer)
+        td = link_to 'Destroy', offer, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Offer', new_offer_path

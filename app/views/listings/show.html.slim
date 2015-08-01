@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @listing.title
+p
+  strong Description:
+  = @listing.description
+
+= link_to 'Edit', edit_listing_path(@listing)
+'|
+= link_to 'Back', listings_path
