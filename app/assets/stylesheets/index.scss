@@ -1,3 +1,4 @@
+@import "colors";
 
 main {
   margin-top: 0;
@@ -15,14 +16,14 @@ main {
 
 .banner {
   padding: 20px;
-  background-color: #EEE;
+  background-color: $chalk;
 }
 
 .panel-img {
   width:150px;
   height: 170px;
-  border: 1px solid #DDD;
-  background-color: #EEE;
+  border: 1px solid $dark-chalk;
+  background-color: $chalk;
   left: 0;
   right: 0;
   margin: 0 auto;
