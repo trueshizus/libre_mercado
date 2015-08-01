@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :offers
+  resources :offers do
+    member do
+      put :accept
+      put :reject
+    end
+  end
   resources :listings
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'

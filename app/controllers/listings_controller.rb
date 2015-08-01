@@ -1,16 +1,19 @@
 class ListingsController < ApplicationController
   before_action :listing, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!, except: [:index, :show]
+
   # GET /listings
   # GET /listings.json
   def index
-    @listings = current_user.listings
+    @my_listings = current_user.listings if current_user.present?
+    @all_listings = Listing.all.page params[:page]
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
-    listing
+    @offers_for_listing = listing.offers.pending.page params[:page]
   end
 
   # GET /listings/new
@@ -55,15 +58,14 @@ class ListingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def listing
-      @listing ||= Listing.find(params[:id])
-    end
 
+  # Use callbacks to share common setup or constraints between actions.
+  def listing
+    @listing ||= Listing.find(params[:id])
+  end
 
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def listing_params
-      params.require(:listing).permit(:title, :description)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def listing_params
+    params.require(:listing).permit(:title, :description)
+  end
 end

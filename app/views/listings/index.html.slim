@@ -1,4 +1,4 @@
-h1 Listing listings
+h1 Listings
 
 table
   thead
@@ -10,7 +10,7 @@ table
       th
 
   tbody
-    - @listings.each do |listing|
+    - @all_listings.each do |listing|
       tr
         td = listing.title
         td = listing.description
@@ -21,3 +21,5 @@ table
 br
 
 = link_to 'New Listing', new_listing_path
+
+= paginate @all_listings

@@ -247,6 +247,7 @@ DEPENDENCIES
   hub
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   letter_opener
   pg
   pry-rails
