@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :offer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /offers
   # GET /offers.json
@@ -14,17 +15,27 @@ class OffersController < ApplicationController
 
   # GET /offers/new
   def new
-    @offer = Offer.new
+    @offer = Offer.new(listing_id: params[:listing])
   end
 
   # GET /offers/1/edit
   def edit
   end
 
+  def accept
+    offer.update_attributes!(status: :accepted)
+    redirect_to listings_path
+  end
+
+  def reject
+    offer.update_attributes!(status: :rejected)
+    redirect_to listings_path
+  end
+
   # POST /offers
   # POST /offers.json
   def create
-    @offer = Offer.new(offer_params)
+    @offer = Offer.new(offer_params.merge(user: current_user, listing_id: params[:listing_id]))
 
     respond_to do |format|
       if @offer.save
@@ -62,13 +73,14 @@ class OffersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_offer
-      @offer = Offer.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def offer_params
-      params.require(:offer).permit(:description, :price, :user_id, :listing_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def offer
+    @offer ||= Offer.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def offer_params
+    params.require(:offer).permit(:description, :price, :user_id, :listing_id)
+  end
 end

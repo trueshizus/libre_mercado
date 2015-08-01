@@ -7,6 +7,12 @@ p
   strong Description:
   = @listing.description
 
+- if @listing.user != current_user
+  = link_to 'Ofertar', new_offer_path(listing: @listing)
+- if @listing.user == current_user
+  h3 Ofertas
+  = render partial: 'offers/offers_table', locals: {offers: @offers_for_listing}
+br
 = link_to 'Edit', edit_listing_path(@listing)
-'|
+br
 = link_to 'Back', listings_path

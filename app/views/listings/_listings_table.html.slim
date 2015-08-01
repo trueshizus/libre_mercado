@@ -12,8 +12,8 @@ table
       tr
         td = listing.title
         td = listing.description
+        td = link_to 'Show', listing
         - if my_listings
-          td = link_to 'Show', listing
           td = link_to 'Edit', edit_listing_path(listing)
           td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
 

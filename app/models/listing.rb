@@ -4,4 +4,6 @@ class Listing < ActiveRecord::Base
   has_many :offers
 
   paginates_per 10
+
+  enum status: [:pending, :finished]
 end
