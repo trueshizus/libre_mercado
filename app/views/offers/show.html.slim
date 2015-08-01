@@ -6,6 +6,12 @@ p
 p
   strong Price:
   = @offer.price
+p
+  - if @offer.pictures.present?
+    strong
+      | Pictures:
+    - @offer.pictures.each do |pic|
+      = image_tag(pic.picture, size: '100x100')
 
 = link_to 'Edit', edit_offer_path(@offer)
 '|

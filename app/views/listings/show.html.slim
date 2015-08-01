@@ -6,6 +6,12 @@ p
 p
   strong Description:
   = @listing.description
+p
+  - if @listing.pictures.present?
+    strong
+      | Pictures:
+    - @listing.pictures.each do |pic|
+      = image_tag(pic.picture, size: '100x100')
 
 - if @listing.user != current_user && current_user.can_offer?(@listing)
   = link_to 'Ofertar', new_offer_path(listing: @listing)
