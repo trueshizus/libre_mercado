@@ -20,6 +20,18 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
     </fieldset>
+    <div class="form-group">
+        <%= f.label :direccion %>
+        <%= f.text_field :direction, :autocomplete => 'off', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :telefono %>
+        <%= f.telephone_field :telephone, :autocomplete => 'off', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :ubicaciones %>
+        <%= f.text_field :places, :autocomplete => 'off', class: 'form-control' %>
+      </div>  
     <fieldset>
       <p>You must enter your current password to make changes.</p>
       <div class="form-group">
