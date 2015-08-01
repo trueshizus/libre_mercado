@@ -5,5 +5,5 @@ class Listing < ActiveRecord::Base
 
   paginates_per 10
 
-  enum status: [:pending, :finished]
+  enum status: [:pending, :rejected, :accepted, :finished, :failed]
 end

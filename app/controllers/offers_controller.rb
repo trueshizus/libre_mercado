@@ -35,10 +35,14 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @offer = Offer.new(offer_params.merge(user: current_user, listing_id: params[:listing_id]),
-                       status: :pending)
+    @offer = Offer.new(offer_params.merge(user: current_user, listing_id: params[:listing_id],
+                       status: :pending))
     listing = Listing.find(params[:listing_id])
     UserMailer.new_offer_email(listing.user).deliver_later
+    uploader = PictureUploader.new
+    params[:offer][:files].each do |file|
+      Picture.create(picture: file, imageable: @offer)
+    end
 
     respond_to do |format|
       if @offer.save
@@ -84,6 +88,6 @@ class OffersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def offer_params
-    params.require(:offer).permit(:description, :price, :user_id, :listing_id)
+    params.require(:offer).permit(:description, :price, :user_id, :listing_id, :status)
   end
 end
