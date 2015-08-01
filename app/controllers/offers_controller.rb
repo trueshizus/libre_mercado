@@ -36,7 +36,9 @@ class OffersController < ApplicationController
   # POST /offers.json
   def create
     @offer = Offer.new(offer_params.merge(user: current_user, listing_id: params[:listing_id]),
-                                          status: :pending)
+                       status: :pending)
+    listing = Listing.find(params[:listing_id])
+    UserMailer.new_offer_email(listing.user).deliver_later
 
     respond_to do |format|
       if @offer.save

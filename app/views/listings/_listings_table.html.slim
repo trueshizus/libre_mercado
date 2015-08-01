@@ -16,6 +16,8 @@ table
         - if my_listings
           td = link_to 'Edit', edit_listing_path(listing)
           td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+          - if listing.offers.pending.present?
+            td Hay Ofertas!!
 
 br
 = paginate listings

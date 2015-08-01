@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def can_offer?(listing)
-    ! Offer.find_by(user: self, listing: listing).present?
+    !Offer.find_by(user: self, listing: listing).present?
   end
-
 end
