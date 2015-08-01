@@ -1,0 +1,21 @@
+table
+  thead
+    tr
+      th Title
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - listings.each do |listing|
+      tr
+        td = listing.title
+        td = listing.description
+        - if my_listings
+          td = link_to 'Show', listing
+          td = link_to 'Edit', edit_listing_path(listing)
+          td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+= paginate listings

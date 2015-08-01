@@ -18,6 +18,7 @@ gem 'pg'
 gem 'puma'
 gem 'pundit'
 gem 'simple_form'
+gem 'kaminari'
 gem 'slim-rails'
 gem 'upmin-admin'
 gem "letter_opener", :group => :development

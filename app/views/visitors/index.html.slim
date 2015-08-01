@@ -1,0 +1,10 @@
+h1 LibreMercado Rlz
+h3
+  | (ToGive se la come)
+- if current_user.present?
+  h3 My Listings
+  = render partial: 'listings/listings_table', locals: {listings: @my_listings, my_listings: true}
+  h3 My Offers
+  = render partial: 'offers/offers_table', locals: {offers: @my_offers}
+h3 All Listings
+= render partial: 'listings/listings_table', locals: {listings: @all_listings, my_listings: false}

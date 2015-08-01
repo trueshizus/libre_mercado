@@ -1,10 +1,12 @@
 class ListingsController < ApplicationController
   before_action :listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = current_user.listings
+    @my_listings = current_user.listings if current_user.present?
+    @all_listings = Listing.all.page params[:page]
   end
 
   # GET /listings/1
