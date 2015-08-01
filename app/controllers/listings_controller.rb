@@ -13,6 +13,9 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @offers_for_listing = listing.offers.pending.page params[:page]
+    listing.offers.pending.each do |offer|
+      offer.update_attributes!(status: :read)
+    end
   end
 
   # GET /listings/new
