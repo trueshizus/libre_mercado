@@ -1,13 +1,37 @@
 / navigation styled for Bootstrap 3.0
+
 nav.navbar.navbar-inverse.navbar-fixed-top
-  .container
+  .container-fluid
     .navbar-header
-      button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-collapse"]
+      button.navbar-toggle.collapsed data-target="#bs-example-navbar-collapse-2" data-toggle="collapse" type="button"
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
-    .collapse.navbar-collapse
+      a.navbar-brand href="#"  LibreMercado
+    #bs-example-navbar-collapse-2.collapse.navbar-collapse
       ul.nav.navbar-nav
-        == render 'layouts/navigation_links'
+        li.active
+          a href="#"
+            |Ofertar!
+            span.sr-only (current)
+        li
+          a href="#"  Nueva publicación
+        li
+          a href="#"  Mis publicaciones
+
+      ul.nav.navbar-nav.navbar-right
+        form.navbar-form.navbar-left role="search"
+          .form-group
+            input.form-control placeholder="#tags" type="text" /
+          button.btn.btn-default type="submit"  Ofertar
+        - if user_signed_in?
+          li
+            = link_to 'Mi Cuenta', edit_user_registration_path
+          li
+            = link_to 'Cerrar sesión', destroy_user_session_path, :method=>'delete'
+        - else
+          li
+            = link_to 'Iniciar sesión', new_user_session_path
+          li
+            = link_to 'Registrarse', new_user_registration_path
