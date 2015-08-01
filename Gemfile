@@ -21,7 +21,6 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'slim-rails'
 gem 'upmin-admin'
-gem "letter_opener", :group => :development
 group :development do
   gem 'better_errors'
   gem 'hub', :require=>nil
