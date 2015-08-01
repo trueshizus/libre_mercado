@@ -7,7 +7,7 @@ p
   strong Description:
   = @listing.description
 
-- if @listing.user != current_user
+- if @listing.user != current_user && current_user.can_offer?(@listing)
   = link_to 'Ofertar', new_offer_path(listing: @listing)
 - if @listing.user == current_user
   h3 Ofertas
