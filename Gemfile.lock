@@ -82,15 +82,6 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.6)
       tilt
-    haml2slim (0.4.7)
-      haml (>= 3.0)
-      nokogiri
-      ruby_parser
-    html2haml (2.0.0)
-      erubis (~> 2.7.0)
-      haml (~> 4.0.0)
-      nokogiri (~> 1.6.0)
-      ruby_parser (~> 3.5)
     hub (1.12.4)
     i18n (0.7.0)
     interception (0.5)
@@ -162,7 +153,6 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_apps_pages (0.6.0)
     rails_layout (1.0.26)
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
@@ -188,8 +178,6 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.5)
-    ruby_parser (3.7.0)
-      sexp_processor (~> 4.1)
     sass (3.4.16)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -197,7 +185,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    sexp_processor (4.6.0)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -252,8 +239,6 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise_invitable
-  haml2slim
-  html2haml
   hub
   jbuilder (~> 2.0)
   jquery-rails
@@ -265,7 +250,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.3)
   rails_12factor
-  rails_apps_pages
   rails_layout
   rubocop
   sass-rails (~> 5.0)
