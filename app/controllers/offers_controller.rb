@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  include Commentable
   before_action :offer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comentable_id: 
+  comentable_type: Comentable
+  body: MyText
+  author_id: 
+  ancestry: MyString
+
+two:
+  comentable_id: 
+  comentable_type: Comentable
+  body: MyText
+  author_id: 
+  ancestry: MyString
