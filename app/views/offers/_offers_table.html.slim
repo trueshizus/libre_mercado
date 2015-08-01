@@ -1,4 +1,4 @@
-
+.row
   - offers.each do |offer|
     .col-xs-12.col-sm-6.col-md-3.col-lg-2
       .panel.panel-default
@@ -7,12 +7,11 @@
             | FOTO
         .panel-footer
           h4
-            = listing.title
-                  td = offer.price
+            = offer.listing.title
           h5
-            = 'Usuario:' + offer.user.email
+            = 'Usuario: ' + offer.user.email
           h5
-            = 'Precio' + offer.listing
+            = 'Precio: ' + offer.price.to_s
           td = link_to 'Ver', offer
           td
             | |
@@ -20,6 +19,5 @@
           td
             | |
           td = link_to 'Eliminar', offer, data: {:confirm => 'Are you sure?'}, :method => :delete
-br
 = paginate offers
 
