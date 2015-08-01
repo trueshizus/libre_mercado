@@ -1,23 +1,20 @@
-table
-  thead
-    tr
-      th Title
-      th Description
-      th
-      th
-      th
-
-  tbody
-    - listings.each do |listing|
-      tr
-        td = listing.title
-        td = listing.description
-        td = link_to 'Show', listing
-        - if my_listings
-          td = link_to 'Edit', edit_listing_path(listing)
-          td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+.row
+  - listings.each do |listing|
+    .col-xs-12.col-sm-6.col-md-3.col-lg-2
+      .panel.panel-default
+        .panel-body
+          .panel-img
+            | FOTO
+        .panel-footer
+          h4
+            = listing.title
+          td = link_to 'Ver', listing
+          td
+            | |
+          td = link_to 'Editar', edit_listing_path(listing)
+          td
+            | |
+          td = link_to 'Eliminar', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
           - if listing.offers.pending.present?
-            td Hay Ofertas!!
-
-br
+            h4 Hay Ofertas!!
 = paginate listings

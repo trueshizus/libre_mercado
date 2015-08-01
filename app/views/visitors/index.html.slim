@@ -1,10 +1,42 @@
-h1 LibreMercado Rlz
-h3
-  | (ToGive se la come)
+.banner
+  - if current_user.present?
+    .row
+      .col-md-5
+        .banner-img
+      .col-md-7
+        h1
+          | Querés comprar algo?
+        h2
+          | LibreMercado es el lugar donde las ofertas llegan a vos
+        = link_to "Publicar", new_listing_path, {class: 'btn btn-primary btn-lg'}
+  - else
+    h1 Probá la experiencia Libremercado!
+    .row
+      .col-md-3
+        h1
+          | 1
+        h2
+          | Registrate
+      .col-md-3
+        h1
+          | 2
+        h2
+          | Publicá tu producto
+      .col-md-3
+        h1
+          | 3
+        h2
+          | Recibí ofertas
+      .col-md-3
+        h1
+          | 4
+        h2
+          | Seleccioná la mejor oferta y contactá al vendedor
+.hola
 - if current_user.present?
-  h3 My Listings
+  h1 Mis publicaciones
   = render partial: 'listings/listings_table', locals: {listings: @my_listings, my_listings: true}
-  h3 My Offers
+  h1 Mis ofertas
   = render partial: 'offers/offers_table', locals: {offers: @my_offers}
-h3 All Listings
+h1 Todas las publicaciones
 = render partial: 'listings/listings_table', locals: {listings: @all_listings, my_listings: false}
