@@ -45,6 +45,11 @@ class OffersController < ApplicationController
       Picture.create(picture: file, imageable: @offer)
     end
 
+    uploader = PictureUploader.new
+    params[:offer][:files].each do |file|
+      Picture.create(picture: file, imageable: @offer)
+    end
+
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
