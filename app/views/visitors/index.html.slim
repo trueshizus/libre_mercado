@@ -38,5 +38,5 @@
   = render partial: 'listings/listings_table', locals: {listings: @my_listings, my_listings: true}
   h1 Mis ofertas
   = render partial: 'offers/offers_table', locals: {offers: @my_offers}
-  h1 Todas las publicaciones
-  = render partial: 'listings/listings_table', locals: {listings: @all_listings, my_listings: false}
+h1 Todas las publicaciones
+= render partial: 'listings/listings_table', locals: {listings: @all_listings, my_listings: false}
