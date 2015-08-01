@@ -1,15 +1,16 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :listing, only: [:show, :edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = current_user.listings
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+    listing
   end
 
   # GET /listings/new
@@ -19,22 +20,14 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+    listing
   end
 
   # POST /listings
   # POST /listings.json
   def create
-    @listing = Listing.new(listing_params)
-
-    respond_to do |format|
-      if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
-        format.json { render :show, status: :created, location: @listing }
-      else
-        format.html { render :new }
-        format.json { render json: @listing.errors, status: :unprocessable_entity }
-      end
-    end
+    @listing = Listing.create(listing_params.merge(user: current_user))
+    redirect_to listings_path
   end
 
   # PATCH/PUT /listings/1
@@ -63,9 +56,11 @@ class ListingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
+    def listing
+      @listing ||= Listing.find(params[:id])
     end
+
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
