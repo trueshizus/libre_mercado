@@ -10,7 +10,8 @@
       = link_to 'Editar', edit_listing_path(@listing), { class: 'btn btn-default pull-right' }
 .row.show-prudct
   .col-md-3.tumb
-    = image_tag(@listing.pictures.first.picture, class: 'img-panel')
+    - if @listing.pictures.present?
+      = image_tag(@listing.pictures.first.picture, class: 'img-panel')
   .col-md-9
     h3
       = @listing.title
