@@ -9,7 +9,7 @@
           h4
             = offer.description
           h5
-            = 'Usuario: ' + offer.user.email
+            = 'Usuario: ' + offer.user.first_name + ' '+ offer.user.last_name
           h5
             = 'Precio: ' + offer.price.to_s
           td = link_to 'Ver', offer

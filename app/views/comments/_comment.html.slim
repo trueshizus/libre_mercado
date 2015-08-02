@@ -1,5 +1,5 @@
 .media-body
-  h4.media-heading=comment.author.email
+  h4.media-heading=comment.author.first_name + ' ' + comment.author.last_name
   i= comment.created_at.strftime('%b %d, %Y at %H:%M')
   p= simple_format comment.body
   = nested_comments comment.children
