@@ -15,3 +15,16 @@
 //= require bootstrap-sprockets
 //= require selectize
 //= require_tree .
+
+$( document ).ready(function() {
+  $('#tag_list').selectize({
+    delimiter: ',',
+    persist: false,
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+  });
+});

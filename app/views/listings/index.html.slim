@@ -1,16 +1,7 @@
 h1 Listings
-
-table
-  thead
-    tr
-      th Title
-      th Description
-      th
-      th
-      th
-
-  tbody
-    - @all_listings.each do |listing|
+- if @all_listings.present?
+  table
+    thead
       tr
         td = listing.title
         td = listing.description
@@ -18,8 +9,19 @@ table
         - if listing.user == current_user
           td = link_to 'Editar', edit_listing_path(listing)
           td = link_to 'Eliminar', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
+    tbody
+      - @all_listings.each do |listing|
+        tr
+          td = listing.title
+          td = listing.description
+          td = link_to 'Show', listing
+          - if listing.user == current_user
+            td = link_to 'Edit', edit_listing_path(listing)
+            td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+  br
+- else
+  .alert.alert-info role="alert"
+    a.alert-link href="#"  No se encontraron publicaciones
 
 = link_to 'New Listing', new_listing_path
 

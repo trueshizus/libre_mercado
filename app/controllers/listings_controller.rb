@@ -7,8 +7,14 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+
     @my_listings = current_user.listings if current_user.present?
-    @all_listings = Listing.all.page params[:page]
+
+    if params[:tag_list].present?
+      @all_listings = Listing.tagged_with(params[:tag_list].split(',')).page params[:page]
+    else
+      @all_listings = Listing.all.page params[:page]
+    end
   end
 
   # GET /listings/1
@@ -45,6 +51,11 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
   def update
+    if params[:listing][:files].present?
+      params[:listing][:files].each do |file|
+        Picture.create(picture: file, imageable: listing)
+      end
+    end
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
@@ -61,7 +72,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

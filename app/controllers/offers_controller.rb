@@ -71,10 +71,10 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   # PATCH/PUT /offers/1.json
   def update
-    offer.update_attributes(product_params.merge(user: current_user,
+    offer.update_attributes(offer_params.merge(user: current_user,
                                                  listing_id: params[:listing_id]))
     params[:offer][:files].each do |file|
-      Picture.create(picture: file, imageable: product)
+      Picture.create(picture: file, imageable: offer)
     end
     redirect_to offer_path(offer)
   end
