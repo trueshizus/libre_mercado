@@ -19,8 +19,9 @@ table
         td = offer.user
         td = offer.listing
         td = link_to 'Show', offer
-        td = link_to 'Edit', edit_offer_path(offer)
-        td = link_to 'Destroy', offer, data: {:confirm => 'Are you sure?'}, :method => :delete
+        - if listing.user == current_user
+          td = link_to 'Edit', edit_offer_path(offer)
+          td = link_to 'Destroy', offer, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 
