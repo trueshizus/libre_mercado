@@ -84,7 +84,7 @@ class OffersController < ApplicationController
   def destroy
     @offer.destroy
     respond_to do |format|
-      format.html { redirect_to offers_url, notice: 'Offer was successfully destroyed.' }
+      format.html { redirect_to offers_url, notice: 'Oferta eliminada.' }
       format.json { head :no_content }
     end
   end
@@ -109,7 +109,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+        format.html { redirect_to @offer, notice: 'Oferta creada.' }
         format.json { render :show, status: :created, location: @offer }
       else
         format.html { render :new }

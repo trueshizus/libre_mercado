@@ -9,7 +9,7 @@ p
 p
   - if @listing.pictures.present?
     strong
-      | Pictures:
+      | Fotos:
     - @listing.pictures.each do |pic|
       = image_tag(pic.picture, size: '100x100')
 
@@ -24,6 +24,6 @@ h4 Tags
   .span.badge
     = tag.name
 br
-= link_to 'Edit', edit_listing_path(@listing)
+= link_to 'Editar', edit_listing_path(@listing)
 br
-= link_to 'Back', listings_path
+= link_to 'Atras', listings_path

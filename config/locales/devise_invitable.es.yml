@@ -1,0 +1,24 @@
+en:
+  devise:
+    failure:
+      invited: "Tiene una invitacion pendiente, aceptela para crear su cuenta."
+    invitations:
+      send_instructions: "Una invitacion fue enviada a %{email}."
+      invitation_token_invalid: "El token ingresado es invalido!"
+      updated: "Contraseña cambiada correctamente. Estas logueado."
+      updated_not_active: "Contraseña cambiada correctamente."
+      no_invitations_remaining: "No le quedan mas invitaciones"
+      invitation_removed: "Tu invitacion fue borrada."
+      new:
+        header: "Enviar invitacion"
+        submit_button: "Enviar invitacion"
+      edit:
+        header: "Cambia la contraseña"
+        submit_button: "Cambia la contraseña"
+    mailer:
+      invitation_instructions:
+        subject: "Instrucciones de invitacion"
+        hello: "Hola %{first_name}"
+        someone_invited_you: "Alguien te invito a %{url}, podes aceptarla con el link siguiente."
+        accept: "Aceptar invitacion"
+        ignore: "Si no quieres aceptar la invitacion, puedes ignorar este mail.<br />Tu cuenta no sera creada hasta que entres al link y cambies tu contraseña."

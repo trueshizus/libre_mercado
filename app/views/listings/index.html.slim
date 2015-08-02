@@ -14,10 +14,10 @@ table
       tr
         td = listing.title
         td = listing.description
-        td = link_to 'Show', listing
+        td = link_to 'Ver', listing
         - if listing.user == current_user
-          td = link_to 'Edit', edit_listing_path(listing)
-          td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td = link_to 'Editar', edit_listing_path(listing)
+          td = link_to 'Eliminar', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 

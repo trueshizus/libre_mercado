@@ -1,22 +1,22 @@
 <div class="authform">
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+  <h3>Editar <%= resource_name.to_s.humanize %></h3>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <div>Esperando la confirmacion de: <%= resource.unconfirmed_email %></div>
       <% end %>
     </div>
     <fieldset>
-      <p>Leave these fields blank if you don't want to change your password.</p>
+      <p>Deja los campos en blanco si no queres cambiar la contraseña.</p>
       <div class="form-group">
-        <%= f.label :password %>
+        <%= f.label :contraseña %>
         <%= f.password_field :password, :autocomplete => 'off', class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label :password_confirmation %>
+        <%= f.label :confirme_contraseña %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
     </fieldset>
@@ -43,7 +43,7 @@
     <fieldset>
       <p>You must enter your current password to make changes.</p>
       <div class="form-group">
-        <%= f.label :current_password %>
+        <%= f.label :contraseña_actual %>
         <%= f.password_field :current_password, class: 'form-control' %>
       </div>
     </fieldset>
@@ -51,7 +51,7 @@
   <% end %>
 </div>
 <div class="authform">
-<h3>Cancel Account</h3>
-<p>Unhappy? We'll be sad to see you go.</p>
-<%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+<h3>Elmininar cuenta</h3>
+<p>Estamos tristes por tu partida :(</p>
+<%= button_to "Elmininar cuenta", registration_path(resource_name), :data => { :confirm => "Estas seguro?" }, :method => :delete, :class => 'button right' %>
 </div>

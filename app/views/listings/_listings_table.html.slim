@@ -4,7 +4,8 @@
       .panel.panel-default
         .panel-body
           .panel-img
-            | FOTO
+            - if listing.pictures.present?
+              = image_tag(listing.pictures[0].picture, size: '100x100')
         .panel-footer
           h4
             = listing.title

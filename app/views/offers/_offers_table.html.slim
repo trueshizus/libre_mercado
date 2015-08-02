@@ -4,7 +4,8 @@
       .panel.panel-default
         .panel-body
           .panel-img
-            | FOTO
+            - if offer.pictures.present?
+              = image_tag(offer.pictures[0].picture, size: '100x100')
         .panel-footer
           h4
             = offer.description

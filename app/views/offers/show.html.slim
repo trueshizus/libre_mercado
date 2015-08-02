@@ -9,11 +9,11 @@ p
 p
   - if @offer.pictures.present?
     strong
-      | Pictures:
+      | Fotos:
     - @offer.pictures.each do |pic|
       = image_tag(pic.picture, size: '100x100')
 
-= link_to 'Edit', edit_offer_path(@offer)
+= link_to 'Editar', edit_offer_path(@offer)
 
 = nested_comments @offer.comments
 = render "comments/form"
