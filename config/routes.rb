@@ -6,6 +6,10 @@ Rails.application.routes.draw do
       get :reject_form
       put :reject
     end
+    collection do
+      post :offer_product
+      get :new_product
+    end
   end
   resources :products
   resources :listings

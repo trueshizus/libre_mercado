@@ -1,0 +1,14 @@
+table
+  thead
+    tr
+      th Description
+      th Precio
+      th Ofertar
+
+  tbody
+    - products.each do |product|
+      = form_for @offer, url: {action: "offer_product", listing_id: listing.id, product_id: product.id} do |f|
+        tr
+          td = product.description
+          td = f.number_field :price
+          td = f.submit :Ofertar

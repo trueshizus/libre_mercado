@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-
   def index
     @products = current_user.products
   end
@@ -21,7 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.update_attributes(product_params.merge(user: current_user))
+    Product.update_attributes(product_params.merge(user: current_user))
     params[:product][:files].each do |file|
       Picture.create(picture: file, imageable: product)
     end
