@@ -1,10 +1,38 @@
-= simple_form_for(@listing) do |f|
-  = f.error_notification
+.new-listing-form
+  .row
+    .col-md-6.col-md-offset-3
+      h1.section-title.text-center
+        | Publicar búsqueda
+      = form_for(@listing) do |f|
+        .row
+          = f.label 'Título', class: 'form-label login-label'
+          .text-center
+            = f.text_field :title, class: 'input form-input'
+        .row
+          = f.label 'Descripción', class: 'form-label login-label'
+          .text-center
+            = f.text_area :description, class: 'input form-input form-text-area'
+        .row
+          = f.label 'tags', class: 'form-label login-label'
+          .text-center.form-input
+            = f.text_field :tag_list, class: 'input form-input'
+        / div
+        /   = f.label :password, class: 'form-label login-label'
+        /   .text-center
+        /     = f.password_field :password, class: 'form-input form-login'
+        / .link.blue.text-center
+        /   = render "devise/shared/links"
+        .row
+          = f.submit 'Crear', class: 'btn button-general submit-button full-width-btn'
 
-  .form-inputs
-    = f.input :title
-    = f.file_field :files, multiple: true
-    = f.input :description
-    = f.input :tag_list
-  .form-actions
-    = f.button :submit
+
+/ = simple_form_for(@listing) do |f|
+/   = f.error_notification
+
+/   .form-inputs
+/     = f.input :title
+/     = f.file_field :files, multiple: true
+/     = f.input :description
+/     = f.input :tag_list
+/   .form-actions
+/     = f.button :submit

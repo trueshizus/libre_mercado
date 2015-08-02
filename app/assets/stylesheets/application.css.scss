@@ -77,3 +77,42 @@ h3 {
 .links {
   margin-top: 10px;
 }
+
+.section-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  // color: $black;
+}
+
+.form-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: $black;
+  margin-top: 10px;
+}
+
+.button-general {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: $white;
+  background-color: $blue;
+  border-radius: 0;
+  transition: all 0.5s ease;
+  &:hover, &:focus {
+    color: $blue;
+  }
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 75px;
+  height: 50px;
+  padding: 0 50px;
+}
+
