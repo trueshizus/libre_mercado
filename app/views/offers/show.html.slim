@@ -24,7 +24,7 @@ h1.text-center
       .row
         h3.text-left
           strong
-            = " $ #{@offer.price}"
+            = " $ #{@offer.price}0"
       - if @offer.listing.user == current_user
         .row
           = link_to "Aceptar", accept_offer_path(@offer), class: 'btn btn-success pull-right btn-block'

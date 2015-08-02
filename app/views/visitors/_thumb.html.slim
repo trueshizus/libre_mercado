@@ -9,9 +9,12 @@
         = preview.title
       - else
         = preview.listing.title
-    - if offer_enable
-      span.label.label-warning
-        - if preview.user_id == current_user.id
-          - if Offer.where(listing_id: preview.id).last.status == "pending"
-            = text
+    - if preview.class == Offer
+      - if preview.comments.count > 0
+        span.label.label-warning
+          | Hay comentarios
+    - else
+      - if preview.offers.pending.count > 0 && preview.user == current_user
+        span.label.label-success
+          | Nueva Oferta!
     .border-bottom
