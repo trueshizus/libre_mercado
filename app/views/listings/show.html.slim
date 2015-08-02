@@ -13,8 +13,9 @@ p
     - @listing.pictures.each do |pic|
       = image_tag(pic.picture, size: '100x100')
 
-- if @listing.user != current_user && current_user.can_offer?(@listing)
-  = link_to 'Ofertar', new_offer_path(listing: @listing)
+- if user_signed_in?
+    - if @listing.user != current_user && current_user.can_offer?(@listing)
+      = link_to 'Ofertar', new_offer_path(listing: @listing)
 - if @listing.user == current_user
   h3 Ofertas
   = render partial: 'offers/offers_table', locals: {offers: @offers_for_listing}
@@ -25,5 +26,4 @@ h4 Tags
     = tag.name
 br
 = link_to 'Editar', edit_listing_path(@listing)
-br
-= link_to 'Atras', listings_path
+

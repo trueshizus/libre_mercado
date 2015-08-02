@@ -1,20 +1,17 @@
 / navigation styled for Bootstrap 3.0
 
 nav.navbar.navbar-inverse.navbar-fixed-top
-  .container-fluid
+  .container
     .navbar-header
       button.navbar-toggle.collapsed data-target="#bs-example-navbar-collapse-2" data-toggle="collapse" type="button"
         span.sr-only Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="/"  LibreMercado
+      a.navbar-brand href="/"
+        = image_tag("logo_navbar.svg", class:'menu-logo')
     #bs-example-navbar-collapse-2.collapse.navbar-collapse
       ul.nav.navbar-nav
-        li.active
-          a href="#"
-            | Ofertar!
-            span.sr-only (current)
         - if user_signed_in?
           li
             = link_to  'Nueva publicación', new_listing_path
@@ -31,5 +28,3 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         - else
           li
             = link_to 'Iniciar sesión', new_user_session_path
-          li
-            = link_to 'Registrarse', new_user_registration_path

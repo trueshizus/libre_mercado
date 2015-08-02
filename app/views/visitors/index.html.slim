@@ -1,42 +1,59 @@
-.banner
-  - if current_user.present?
-    .row
-      .col-md-5
-        .banner-img
-      .col-md-7
-        h1
-          | Querés comprar algo?
-        h2
-          | LibreMercado es el lugar donde las ofertas llegan a vos
-        = link_to "Publicar", new_listing_path, {class: 'btn btn-primary btn-lg'}
-  - else
-    h1 Probá la experiencia Libremercado!
-    .row
-      .col-md-3
-        h1
-          | 1
-        h2
-          | Registrate
-      .col-md-3
-        h1
-          | 2
-        h2
-          | Publicá tu producto
-      .col-md-3
-        h1
-          | 3
-        h2
-          | Recibí ofertas
-      .col-md-3
-        h1
-          | 4
-        h2
-          | Seleccioná la mejor oferta y contactá al vendedor
-.hola
 - if current_user.present?
-  h1 Mis publicaciones
-  = render partial: 'listings/listings_table', locals: {listings: @my_listings, my_listings: true}
-  h1 Mis ofertas
-  = render partial: 'offers/offers_table', locals: {offers: @my_offers}
-h1 Todas las publicaciones
-= render partial: 'listings/listings_table', locals: {listings: @all_listings, my_listings: false}
+  .row
+    .col-md-5
+      .banner-img
+    .col-md-7
+      h1
+        | Querés comprar algo?
+      h2
+        | LibreMercado es el lugar donde las ofertas llegan a vos
+      = link_to "Quiero comprar", new_listing_path, {class: 'btn btn-primary btn-lg'}
+- else
+  h1.main-title.text-center Comprar vuelve a ser fácil
+  .row
+    .col-md-12
+      h3.text-center
+        | LibreMercado, el espacio donde publicás lo que buscás y los vendedores compiten por vos.
+      h3.text-center
+        | ¿Sos comprador? Elegí la mejor oferta. ¿Sos vendedor? Conocé la necesidad de tu cliente.
+
+  .row
+    .col-md-3
+      h1
+      = image_tag("step1.svg")
+        | 1
+      h3.text-center
+        | Registrate
+    .col-md-3
+      h1
+      = image_tag("step2.svg")
+        | 2
+      h3.text-center
+        | Publicá tu producto
+    .col-md-3
+      h1
+      = image_tag("step3.svg")
+        | 3
+      h3.text-center
+        | Recibí ofertas
+    .col-md-3
+      h1
+      = image_tag("step4.svg")
+        | 4
+      h3.text-center
+        | Seleccioná la mejor oferta y contactá al vendedor
+.hola
+- if user_signed_in? && @my_listings.present?
+  h2.page-header.title-blue Mis publicaciones
+  .row
+    - @my_listings.each do |preview|
+      = render partial: 'thumb', locals: { preview: preview }
+- if user_signed_in? && @my_offers.present?
+  h2.page-header.title-blue Mis ofertas
+  .row
+    - @my_offers.each do |preview|
+      = render partial: 'thumb', locals: { preview: preview }
+h2.page-header.title-blue Todas las publicaciones
+.row
+  - @all_listings.each do |preview|
+    = render partial: 'thumb', locals: { preview: preview }

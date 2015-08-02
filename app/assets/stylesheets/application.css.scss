@@ -23,7 +23,7 @@
  */
 
 
-@import "bootstrap-sprockets";
+ @import "bootstrap-sprockets";
 
 // Import cerulean variables
 @import "bootswatch/cosmo/variables";
@@ -57,9 +57,126 @@ h1  {
 .navbar-form {
   .selectize-dropdown, .selectize-input {
     height: 43px;
-    border: 0;
+    border: 1px solid #246BB8;
     line-height: 33px;
     min-width: 200px;
     margin-bottom: -4px;
+
+  }
+}
+
+h3 {
+  color: $black;
+  font-size: 22px;
+  margin-top: 5px;
+}
+
+.label-offers {
+  font-size: 14px;
+}
+
+.links {
+  margin-top: 10px;
+}
+
+.section-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  // color: $black;
+}
+
+.form-label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: $black;
+  margin-top: 10px;
+}
+
+.button-general {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: $white;
+  background-color: $blue;
+  border-radius: 0;
+  transition: all 0.5s ease;
+  &:hover, &:focus {
+    color: $blue;
+  }
+}
+
+
+.form-input {
+  padding-left: 15px;
+}
+
+.form-input-tag {
+  .selectize-dropdown, .selectize-input {
+    height: 50px;
+    line-height: 40px;
+  }
+  padding: 0;
+}
+
+.container {
+  max-width: 1280px;
+}
+
+.libre-form {
+  background-color: $dark-chalk;
+  padding-bottom: 50px;
+
+  .input-label {
+    margin-top: 10px;
+  }
+  .submit-button {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 50px;
+    padding: 0 50px;
+    line-height: 50px;
+  }
+}
+
+.navbar-inverse {
+  background-color: $white;
+}
+
+.menu-logo{
+  height: 50px;
+  margin-top: -15px;
+}
+
+#bs-example-navbar-collapse-2 {
+  a {
+    color: $gray;
+    &:hover {
+      color :$white;
+    }
+  }
+}
+
+h1.main-title {
+  color: #1e69bb;
+  font-weight: bold;
+  font-size: 55px;
+}
+
+.title-blue {
+  color: #1e69bb;
+}
+
+.tumb {
+  h4 { color: #222222 }
+  padding: 0 30px;
+  .border-bottom{
+    height: 1px;
+    background-color: #1e69bb;
+    width: 100%;
   }
 }

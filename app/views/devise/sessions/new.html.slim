@@ -1,0 +1,28 @@
+.libre-form
+  .row
+    .col-md-6.col-md-offset-3
+      h1.section-title.text-center
+        | Iniciar sesión
+      = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
+        .row
+          = devise_error_messages!
+        .row
+          = f.label :email, class: 'form-label input-label'
+          .text-center
+            = f.email_field :email, :autofocus => true, class: 'input form-input'
+        .row
+          - if devise_mapping.recoverable?
+            = link_to "Olvidaste tu contraseña?", new_password_path(resource_name), class: 'right'
+        .row
+          = f.label :contraseña, class: 'form-label input-label'
+          .text-center
+            = f.password_field :password, class: 'input form-input'
+        .row
+          = f.submit 'Iniciar sesion', :class => 'button right'
+          - if devise_mapping.rememberable?
+            .checkbox style="width:150px"
+              label
+                = f.check_box :remember_me
+                | Recuerdame
+        .row
+          = link_to 'Registrarse', new_registration_path(resource_name), class: 'btn button-general submit-button full-width-btn'

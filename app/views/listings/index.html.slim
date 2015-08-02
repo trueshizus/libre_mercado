@@ -2,22 +2,21 @@ h1 Listings
 - if @all_listings.present?
   table
     thead
-      tr
-        td = listing.title
-        td = listing.description
-        td = link_to 'Ver', listing
-        - if listing.user == current_user
-          td = link_to 'Editar', edit_listing_path(listing)
-          td = link_to 'Eliminar', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+      th
+        td Título
+        td Descripción
+        td Ver
+        td Acciones
     tbody
       - @all_listings.each do |listing|
         tr
           td = listing.title
           td = listing.description
           td = link_to 'Show', listing
-          - if listing.user == current_user
-            td = link_to 'Edit', edit_listing_path(listing)
-            td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td
+            - if listing.user == current_user
+              = link_to 'Edit', edit_listing_path(listing)
+              = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
   br
 - else
   .alert.alert-info role="alert"
