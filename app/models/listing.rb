@@ -7,4 +7,5 @@ class Listing < ActiveRecord::Base
 
   enum status: [:pending, :rejected, :accepted, :finished, :failed]
   accepts_nested_attributes_for :pictures, allow_destroy: true
+  acts_as_taggable
 end
