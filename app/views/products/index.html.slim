@@ -1,19 +1,8 @@
-h1 Listing offers
+= link_to 'Nuevo Producto', new_product_path, {class: 'btn btn-warning btn-lg new-prod'}
+h1.main-title Mi Inventario
+h2 Cargá tus productos que querés ofrecer
 
-table
-  thead
-    tr
-      th Description
-      th
-      th
 
-  tbody
-    - @products.each do |product|
-      tr
-        td = product.description
-        td = link_to 'Editar', edit_product_path(product)
-        td = link_to 'Eliminar', product, data: {:confirm => 'Estás seguro?'}, :method => :delete
-
-br
-
-= link_to 'Nuevo Producto', new_product_path
+.row
+  - @products.each do |preview|
+      = render partial: 'thumb', locals: { preview: preview, offer_enable: false, text: "¡Hay ofertas!"}

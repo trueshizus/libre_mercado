@@ -1,0 +1,12 @@
+= link_to edit_polymorphic_path(preview)
+  .col-md-3.tumb
+    - if preview.pictures.first
+      = image_tag(preview.pictures.first.picture, class: 'img-panel')
+    - else
+      = image_tag("palceholder.svg", class: 'img-panel')
+    h4
+      - if (preview.has_attribute? :title) && (!preview.title.blank?)
+        = preview.title
+      - else
+       | Sin título
+    .border-bottom

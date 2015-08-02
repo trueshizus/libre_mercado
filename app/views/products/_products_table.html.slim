@@ -1,0 +1,33 @@
+.row
+  - offers.each do |offer|
+    .col-xs-12.col-sm-6.col-md-3.col-lg-2
+      .panel.panel-default
+        .panel-body
+          .panel-img
+            - if offer.pictures.present?
+              = image_tag(offer.pictures.first.picture, class: 'img-panel')
+        .panel-footer.text-center
+          h3
+            = offer.description
+          h5
+            = 'Usuario: ' + offer.user.first_name + ' ' + offer.user.last_name
+          h5
+            = 'Precio: ' + offer.price.to_s
+          td = link_to 'Ver', offer
+          - if offer.user != current_user
+            td
+              | |
+            td = link_to 'Rechazar', reject_form_offer_path(offer)
+            td
+              | |
+            td
+              = link_to 'Aceptar', accept_offer_path(offer), method: :put
+            td
+          - else
+            td
+              | |
+            td = link_to 'Editar', edit_offer_path(offer)
+            td
+              | |
+            td = link_to 'Eliminar', offer, data: {:confirm => 'Are you sure?'}, :method => :delete
+= paginate offers

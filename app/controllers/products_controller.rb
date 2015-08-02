@@ -9,8 +9,10 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.create(product_params.merge(user: current_user))
-    params[:product][:files].each do |file|
-      Picture.create(picture: file, imageable: product)
+    if params[:product][:files].present?
+      params[:product][:files].each do |file|
+        Picture.create(picture: file, imageable: product)
+      end
     end
     redirect_to products_path
   end
@@ -20,17 +22,19 @@ class ProductsController < ApplicationController
   end
 
   def update
-    Product.update_attributes(product_params.merge(user: current_user))
-    params[:product][:files].each do |file|
-      Picture.create(picture: file, imageable: product)
+    product.update_attributes(product_params.merge(user: current_user))
+    if params[:product][:files].present?
+      params[:product][:files].each do |file|
+        Picture.create(picture: file, imageable: product)
+      end
     end
     redirect_to products_path
   end
 
   def destroy
-    @product.destroy
+    product.destroy
     respond_to do |format|
-      format.html { redirect_to offers_url, notice: 'Producto eliminado' }
+      format.html { redirect_to products_url, notice: 'Producto eliminado' }
       format.json { head :no_content }
     end
   end
@@ -43,6 +47,6 @@ class ProductsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
-    params.require(:product).permit(:description, :user_id)
+    params.require(:product).permit(:description, :user_id, :title)
   end
 end
