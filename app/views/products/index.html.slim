@@ -1,0 +1,19 @@
+h1 Listing offers
+
+table
+  thead
+    tr
+      th Description
+      th
+      th
+
+  tbody
+    - @products.each do |product|
+      tr
+        td = product.description
+        td = link_to 'Editar', edit_product_path(product)
+        td = link_to 'Eliminar', product, data: {:confirm => 'Estás seguro?'}, :method => :delete
+
+br
+
+= link_to 'Nuevo Producto', new_product_path

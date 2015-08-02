@@ -1,5 +1,7 @@
-h1 New offer
+h1 Ofrecé tu producto!
 
 == render 'form'
 
-= link_to 'Back', offers_path
+h4
+  | Ya cargaste un producto similar?
+  = link_to "Ofrecelo!", new_product_offers_path(listing: @listing)
