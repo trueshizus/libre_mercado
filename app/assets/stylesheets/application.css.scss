@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *= require selectize
- *= require selectize.default
+ *= require selectize.bootstrap3
  *= require framework_and_overrides
  *= require index
  *= require listings
@@ -37,6 +37,7 @@ body { padding-top: 60px; }
 // And finally bootswatch style itself
 @import "bootswatch/cosmo/bootswatch";
 
+
 @import 'colors';
 
 a:hover
@@ -47,4 +48,18 @@ a:hover
 h1  {
   color: $blue;
   font-weight: 400;
+}
+
+.selectize-dropdown, .selectize-input {
+  border-radius: 0;
+}
+
+.navbar-form {
+  .selectize-dropdown, .selectize-input {
+    height: 43px;
+    border: 0;
+    line-height: 33px;
+    min-width: 200px;
+    margin-bottom: -4px;
+  }
 }

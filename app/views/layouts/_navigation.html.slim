@@ -19,10 +19,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
           li
             = link_to  'Nueva publicación', new_listing_path
       ul.nav.navbar-nav.navbar-right
-        form.navbar-form.navbar-left role="search"
+        = form_tag listings_path, class: 'navbar-form navbar-left', role: 'search', method: :get
           .form-group
-            input.form-control placeholder="#tags" type="text" /
-          button.btn.btn-default type="submit"  Ofertar
+            = text_field_tag :tag_list, nil, class: 'form-control', placeholder: '#tags'
+            = submit_tag "Buscar", class: 'btn btn-default'
         - if user_signed_in?
           li
             = link_to 'Mi Cuenta', edit_user_registration_path
