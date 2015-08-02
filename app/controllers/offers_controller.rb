@@ -62,7 +62,7 @@
   # POST /offers.json
   def create
     create_offer
-    return punless params[:offer][:files].present?
+    return unless params[:offer][:files].present?
     params[:offer][:files].each do |file|
       Picture.create(picture: file, imageable: offer)
     end

@@ -10,6 +10,7 @@
             = f.text_field :description, class: 'input form-input'
         .row
           = f.label 'Precio', class: 'form-label input-label'
+          = hidden_field_tag 'listing_id', @offer.listing_id
           .text-center
             = f.number_field :price, class: 'input form-input form-input'
         .row
