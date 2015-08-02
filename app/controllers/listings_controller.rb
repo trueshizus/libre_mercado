@@ -7,8 +7,14 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+
     @my_listings = current_user.listings if current_user.present?
-    @all_listings = Listing.all.page params[:page]
+
+    if params[:tag_list].present?
+      @all_listings = Listing.tagged_with(params[:tag_list].split(',')).page params[:page]
+    else
+      @all_listings = Listing.all.page params[:page]
+    end
   end
 
   # GET /listings/1
