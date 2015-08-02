@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150802010748) do
+=======
+ActiveRecord::Schema.define(version: 20150802013132) do
+>>>>>>> CRUD for products
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150802010748) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "status"
+    t.integer  "product_id"
   end
 
   add_index "offers", ["listing_id"], name: "index_offers_on_listing_id", using: :btree
@@ -83,6 +88,12 @@ ActiveRecord::Schema.define(version: 20150802010748) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+
+  create_table "products", force: :cascade do |t|
+    t.string  "description", default: "", null: false
+    t.integer "user_id",                  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

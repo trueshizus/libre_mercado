@@ -70,15 +70,12 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   # PATCH/PUT /offers/1.json
   def update
-    respond_to do |format|
-      if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @offer }
-      else
-        format.html { render :edit }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
-      end
+    offer.update_attributes(product_params.merge(user: current_user,
+                                                 listing_id: params[:listing_id]))
+    params[:offer][:files].each do |file|
+      Picture.create(picture: file, imageable: product)
     end
+    redirect_to offer_path(offer)
   end
 
   # DELETE /offers/1

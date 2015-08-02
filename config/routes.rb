@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       put :reject
     end
   end
+  resources :products
   resources :listings
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
