@@ -5,9 +5,9 @@
         .panel-body
           .panel-img
             - if offer.pictures.present?
-              = image_tag(offer.pictures[0].picture, size: '100x100')
-        .panel-footer
-          h4
+              = image_tag(offer.pictures.first.picture, class: 'img-panel')
+        .panel-footer.text-center
+          h3
             = offer.description
           h5
             = 'Usuario: ' + offer.user.first_name + ' ' + offer.user.last_name

@@ -5,20 +5,21 @@
         .panel-body
           .panel-img
             - if listing.pictures.present?
-              = image_tag(listing.pictures[0].picture, size: '100x100')
-        .panel-footer
-          h4
+              = image_tag(listing.pictures.first.picture, class: 'img-panel')
+        .panel-footer.text-center
+          h3
             = listing.title
-            - if listing.offers.pending.present?
-              span.label.label-success
-                | Hay Ofertas!
-          td = link_to 'Ver', listing
-          td
-          - if listing.user == current_user
-            | |
-            td = link_to 'Editar', edit_listing_path(listing)
+          - if listing.offers.pending.present?
+            span.label.label-success.label-offers
+              | Hay Ofertas!
+          .links
+            td = link_to 'Ver', listing
             td
-            | |
-            td = link_to 'Eliminar', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+            - if listing.user == current_user
+              | |
+              td = link_to 'Editar', edit_listing_path(listing)
+              td
+              | |
+              td = link_to 'Eliminar', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 = paginate listings
