@@ -11,5 +11,7 @@
         = preview.listing.title
     - if offer_enable
       span.label.label-warning
-        = text
+        - if preview.user_id == current_user.id
+          - if Offer.where(listing_id: preview.id).last.status == "pending"
+            = text
     .border-bottom

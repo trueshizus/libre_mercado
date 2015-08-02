@@ -7,11 +7,15 @@
         | Volver
 
 h1.text-center
-  | Oferta
+  - if current_user.id != @offer.user_id
+    | Oferta recibida
+  - else
+    | Tu oferta
 .row.show-prudct
   .row
     .col-md-3.tumb
-       = image_tag(@offer.pictures.first.picture, class: 'img-panel')
+      - if @offer.pictures.present?
+        = image_tag(@offer.pictures.first.picture, class: 'img-panel')
     .col-md-6
       .offer-description
         = @offer.description
@@ -22,10 +26,12 @@ h1.text-center
           strong
             = " $ #{@offer.price}"
       .row
-        = link_to "Aceptar", accept_offer_path(@offer), class: 'btn btn-success pull-right btn-block'
+        - if current_user.id != @offer.user_id
+          = link_to "Aceptar", accept_offer_path(@offer), class: 'btn btn-success pull-right btn-block'
       br
       .row
-        = link_to "Rechazar", reject_form_offer_path(@offer), class: 'btn btn-default pull-right btn-block'
+        - if current_user.id != @offer.user_id
+          = link_to "Rechazar", reject_form_offer_path(@offer), class: 'btn btn-default pull-right btn-block'
 
 .row
   = render "comments/form"
