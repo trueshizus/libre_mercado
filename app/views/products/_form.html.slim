@@ -1,7 +1,20 @@
-= simple_form_for(@product) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :description
-    = f.file_field :files, multiple: true
-  .form-actions
-    = f.button :submit
+.libre-form
+  .row
+    .col-md-6.col-md-offset-3
+      h1.section-title.text-center
+        = title
+      = form_for(@product) do |f|
+        .row
+          = f.label 'Título', class: 'form-label input-label'
+          .text-center
+            = f.text_field :title, class: 'input form-input'
+        .row
+          = f.label 'Descripción', class: 'form-label input-label'
+          .text-center
+            = f.text_area :description, class: 'input form-input form-text-area'
+        .row
+          = f.label 'Fotos', class: 'form-label input-label'
+          .text-center.form-input-tag
+            = f.file_field :files, multiple: true
+        .row
+          = f.submit action, class: 'btn button-general submit-button full-width-btn'

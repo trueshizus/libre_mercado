@@ -1,5 +1,7 @@
-h1 Editar Producto
+== render 'form', title: "Editar Producto", action: "Guardar cambios"
 
-== render 'form'
+br
+= link_to 'Volver', products_path,  {class: 'btn btn-default', method: 'delete' }
+- if @product.user == current_user
+  = link_to 'Eliminar', product_path(@product), { class: 'btn btn-default pull-right', method: 'delete' }
 
-= link_to 'Volver', products_path
