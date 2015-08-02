@@ -2,7 +2,7 @@ class Offer < ActiveRecord::Base
   belongs_to :user
   belongs_to :listing
 
-  enum status: [:pending, :read, :accepted, :rejected]
+  enum status: [:pending, :read, :accepted, :rejected, :not_accepted]
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :pictures, as: :imageable
