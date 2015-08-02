@@ -4,10 +4,13 @@
       .panel.panel-default
         .panel-body
           .panel-img
-            | FOTO
-        .panel-footer
+            = image_tag(listing.pictures.first.picture, class: 'img-panel')
+        .panel-footer.text-center
           h4
             = listing.title
+            - if listing.offers.pending.present?
+              span.label.label-success
+                | Hay Ofertas!
           td = link_to 'Ver', listing
           td
           - if listing.user == current_user
@@ -16,6 +19,5 @@
             td
             | |
             td = link_to 'Eliminar', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
-          - if listing.offers.pending.present?
-            h4 Hay Ofertas!!
+
 = paginate listings

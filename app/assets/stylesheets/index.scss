@@ -19,8 +19,8 @@ main {
   background-color: $chalk;
 }
 
-.panel-img {
-  width:150px;
+.panel-for-img {
+  width: 150px;
   height: 170px;
   border: 1px solid $dark-chalk;
   background-color: $chalk;
@@ -28,3 +28,9 @@ main {
   right: 0;
   margin: 0 auto;
 }
+
+.img-panel {
+  height: 150px;
+  width: 100%;
+}
+

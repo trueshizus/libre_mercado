@@ -36,3 +36,15 @@ body { padding-top: 60px; }
 
 // And finally bootswatch style itself
 @import "bootswatch/cosmo/bootswatch";
+
+@import 'colors';
+
+a:hover
+{
+  text-decoration:none;
+}
+
+h1  {
+  color: $blue;
+  font-weight: 400;
+}

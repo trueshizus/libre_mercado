@@ -1,8 +1,8 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
   validates :user, presence:  true
-  has_many :offers
-  has_many :pictures, as: :imageable
+  has_many :offers, dependent: :delete_all
+  has_many :pictures, as: :imageable, dependent: :delete_all
   paginates_per 10
 
   enum status: [:pending, :rejected, :accepted, :finished, :failed]
