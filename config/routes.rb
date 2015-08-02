@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :offers do
     resources :comments
     member do
-      put :accept
+      get :accept
+      get :reject_form
       put :reject
     end
   end

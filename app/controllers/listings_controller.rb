@@ -35,7 +35,6 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.create(listing_params.merge(user: current_user))
     if params[:listing][:files].present?
-      uploader = PictureUploader.new
       params[:listing][:files].each do |file|
         Picture.create(picture: file, imageable: @listing)
       end

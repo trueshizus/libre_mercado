@@ -1,0 +1,11 @@
+.container-fluid
+  h1 Rechazar Oferta
+  = form_tag(reject_offer_path, method: "put") do
+    h4
+      | Dejale un mensaje al vendedor. Recordá ser amable y dar consejos sobre como puede mejorar su oferta!
+    h4
+      | Recordá que una vez que rechaces esta oferta no podrás aceptarla en el futuro.
+    .row
+      = text_area_tag(:feedback, "", size: "100x6")
+    .row
+      = submit_tag("Enviar")

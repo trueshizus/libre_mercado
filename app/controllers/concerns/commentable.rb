@@ -2,7 +2,7 @@ module Commentable
   extend ActiveSupport::Concern
 
   included do
-    before_filter :comments, only: [:show]
+    before_action :comments, only: [:show]
   end
 
   def comments
@@ -14,7 +14,6 @@ module Commentable
   private
 
   def find_commentable
-    return params[:controller].singularize.classify.constantize.find(params[:id])
+    params[:controller].singularize.classify.constantize.find(params[:id])
   end
-
 end

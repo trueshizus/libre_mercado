@@ -30,22 +30,17 @@ class OffersController < ApplicationController
 
   def reject
     offer.update_attributes!(status: :rejected)
-    redirect_to listings_path
+    UserMailer.offer_rejected_email(offer, params[:feedback]).deliver_later
+    redirect_to listing_path(offer.listing)
   end
 
   # POST /offers
   # POST /offers.json
   def create
     @offer = Offer.new(offer_params.merge(user: current_user, listing_id: params[:listing_id],
-                       status: :pending))
+                                          status: :pending))
     listing = Listing.find(params[:listing_id])
     UserMailer.new_offer_email(listing.user).deliver_later
-    uploader = PictureUploader.new
-    params[:offer][:files].each do |file|
-      Picture.create(picture: file, imageable: @offer)
-    end
-
-    uploader = PictureUploader.new
     params[:offer][:files].each do |file|
       Picture.create(picture: file, imageable: @offer)
     end
