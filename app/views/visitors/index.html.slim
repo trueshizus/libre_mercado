@@ -47,7 +47,7 @@
   h2.page-header.title-blue Mis publicaciones
   .row
     - @my_listings.each do |preview|
-      = render partial: 'thumb', locals: { preview: preview, offer_enable: preview.offers.present?, text: "¡Hay ofertas!"}
+      = render partial: 'thumb', locals: { preview: preview, offer_enable: preview.offers.present?, text: "¡Hay ofertas nuevas!"}
 - if user_signed_in? && @my_offers.present?
   h2.page-header.title-blue Mis ofertas
   .row
