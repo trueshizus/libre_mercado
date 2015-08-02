@@ -8,6 +8,9 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bootswatch-rails'
 gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
+gem 'acts-as-taggable-on'
+gem 'selectize-rails'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
