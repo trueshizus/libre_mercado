@@ -13,7 +13,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
     #bs-example-navbar-collapse-2.collapse.navbar-collapse
       ul.nav.navbar-nav
         - if user_signed_in?
-          li
+          li.new-publication
             = link_to  'Nueva publicación', new_listing_path
       ul.nav.navbar-nav.navbar-right
         = form_tag listings_path, class: 'navbar-form navbar-left', role: 'search', method: :get

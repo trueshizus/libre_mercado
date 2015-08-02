@@ -175,8 +175,20 @@ h1.main-title {
   h4 { color: #222222 }
   padding: 0 30px;
   .border-bottom{
+    margin: 10px 0;
     height: 1px;
     background-color: #1e69bb;
     width: 100%;
   }
 }
+
+.btn-warning, .label-warning{
+  background-color: #F05C44;
+}
+
+#bs-example-navbar-collapse-2 > ul:nth-child(1) > li > a {
+    background-color: #F05C44;
+    border: 1px solid #F05C44;
+    color: white;
+}
+

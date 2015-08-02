@@ -5,5 +5,9 @@
     - else
       = image_tag("palceholder.svg", class: 'img-panel')
     h4
-      = preview.title
+      - if preview.has_attribute? :title
+        = preview.title
+    - if offer_enable
+      span.label.label-warning
+        = text
     .border-bottom

@@ -1,13 +1,13 @@
 - if current_user.present?
   .row
     .col-md-5
-      .banner-img
+      = image_tag("img_home_logueado")
     .col-md-7
-      h1
-        | Querés comprar algo?
+      h1.main-title
+        | ¿Querés comprar algo?
       h2
         | LibreMercado es el lugar donde las ofertas llegan a vos
-      = link_to "Quiero comprar", new_listing_path, {class: 'btn btn-primary btn-lg'}
+      = link_to "Quiero comprar", new_listing_path, {class: 'btn btn-warning btn-lg'}
 - else
   h1.main-title.text-center Comprar vuelve a ser fácil
   .row
@@ -42,18 +42,18 @@
         | 4
       h3.text-center
         | Seleccioná la mejor oferta y contactá al vendedor
-.hola
+
 - if user_signed_in? && @my_listings.present?
   h2.page-header.title-blue Mis publicaciones
   .row
     - @my_listings.each do |preview|
-      = render partial: 'thumb', locals: { preview: preview }
+      = render partial: 'thumb', locals: { preview: preview, offer_enable: preview.offers.present?, text: "¡Hay ofertas!"}
 - if user_signed_in? && @my_offers.present?
   h2.page-header.title-blue Mis ofertas
   .row
     - @my_offers.each do |preview|
-      = render partial: 'thumb', locals: { preview: preview }
+      = render partial: 'thumb', locals: { preview: preview, offer_enable: preview.comments.present?, text: "¡Hay respuesta!"}
 h2.page-header.title-blue Todas las publicaciones
 .row
   - @all_listings.each do |preview|
-    = render partial: 'thumb', locals: { preview: preview }
+    = render partial: 'thumb', locals: { preview: preview, offer_enable: false }

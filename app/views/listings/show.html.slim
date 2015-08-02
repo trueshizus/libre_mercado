@@ -1,29 +1,34 @@
-p#notice = notice
+.row
+  p#notice = notice
+.row
+  = link_to :back
+    span.glyphicon.glyphicon-chevron-left aria-hidden="true"
+      | Volver
+.row.show-prudct
+  .col-md-4
+    = image_tag(@listing.pictures.first.picture, class: 'img-panel')
+  .col-md-8
+    h3
+      = @listing.title
+    p
+      = @listing.description
+    .row
+      .col-md-8
+        - @listing.tags.each do |tag|
+          .span.badge
+            = tag.name
+      .col-md-4
+        - if user_signed_in?
+            - if @listing.user != current_user && current_user.can_offer?(@listing)
+              = link_to 'Ofertar', new_offer_path(listing: @listing), {class: 'btn btn-warning btn-lg'}
+        - else
+            = link_to 'Ofertar', new_offer_path(listing: @listing), {class: 'btn btn-warning btn-lg'}
 
-p
-  strong Title:
-  = @listing.title
-p
-  strong Description:
-  = @listing.description
-p
-  - if @listing.pictures.present?
-    strong
-      | Fotos:
-    - @listing.pictures.each do |pic|
-      = image_tag(pic.picture, size: '100x100')
-
-- if user_signed_in?
-    - if @listing.user != current_user && current_user.can_offer?(@listing)
-      = link_to 'Ofertar', new_offer_path(listing: @listing)
 - if @listing.user == current_user
-  h3 Ofertas
-  = render partial: 'offers/offers_table', locals: {offers: @offers_for_listing}
-
-h4 Tags
-- @listing.tags.each do |tag|
-  .span.badge
-    = tag.name
-br
-= link_to 'Editar', edit_listing_path(@listing)
-
+  h2.page-header.title-blue Ofertas recibidas
+  - if @offers_for_listing.present?
+    - @offers_for_listing.each do |preview|
+      = render partial: 'visitors/thumb', locals: { preview: preview, offer_enable: preview.comments.present?, text: "¡Hay respuesta!"}
+  - else
+    .alert.alert-info role="alert"
+      | Aun no has recibido ninguna oferta :(
