@@ -5,11 +5,6 @@
 
 @import 'colors';
 
-.new-listing-form {
-  background-color: $dark-chalk;
-  margin: 7% 23% 0 23%;
-}
-
 img.bg {
   min-height: 100%;
   min-width: 1024px;
@@ -18,10 +13,6 @@ img.bg {
   top: 0;
   left: 0;
   z-index: -1;
-}
-
-.login-label {
-  margin-top: 10px;
 }
 
 .form-input {

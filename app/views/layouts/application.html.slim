@@ -10,7 +10,8 @@ html
     == csrf_meta_tags
   body
     header
-      == render 'layouts/navigation'
-    main[role="main"]
+      .container
+        == render 'layouts/navigation'
+    .container
       == render 'layouts/messages'
       == yield

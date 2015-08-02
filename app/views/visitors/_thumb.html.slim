@@ -1,0 +1,9 @@
+= link_to polymorphic_path(preview)
+  .col-md-3.tumb
+    - if preview.pictures.first
+      = image_tag(preview.pictures.first.picture, class: 'img-panel')
+    - else
+      = image_tag("palceholder.svg", class: 'img-panel')
+    h4
+      = preview.title
+    .border-bottom
