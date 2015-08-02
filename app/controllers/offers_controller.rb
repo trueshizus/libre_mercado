@@ -62,9 +62,9 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    create offer
+    create_offer
     params[:offer][:files].each do |file|
-      Picture.create(picture: file, imageable: @offer)
+      Picture.create(picture: file, imageable: offer)
     end
   end
 
@@ -93,7 +93,7 @@ class OffersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def offer
-    @offer ||= Offer.find(params[:id])
+    @offer ||= params[:id].present? ? Offer.find(params[:id]) : Offer.find_by(listing_id: params[:listing_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150802013132) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +65,11 @@ ActiveRecord::Schema.define(version: 20150802013132) do
 
   add_index "pictures", ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id", using: :btree
 
+  create_table "products", force: :cascade do |t|
+    t.string  "description", default: "", null: false
+    t.integer "user_id",                  null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -85,12 +89,6 @@ ActiveRecord::Schema.define(version: 20150802013132) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
-
-
-  create_table "products", force: :cascade do |t|
-    t.string  "description", default: "", null: false
-    t.integer "user_id",                  null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -7,7 +7,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bootswatch-rails'
-gem 'carrierwave', github:'carrierwaveuploader/carrierwave'
+gem 'carrierwave'
+gem 'fog'
+gem 'fog-aws'
+
 gem 'acts-as-taggable-on'
 gem 'selectize-rails'
 
