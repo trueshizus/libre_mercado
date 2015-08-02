@@ -39,15 +39,15 @@
       <div class="form-group">
         <%= f.label :ubicaciones %>
         <%= f.text_field :places, :autocomplete => 'off', class: 'form-control' %>
-      </div>  
+      </div>
     <fieldset>
-      <p>You must enter your current password to make changes.</p>
+      <p>Ingresá tu contraseña actual para guardar tus cambios.</p>
       <div class="form-group">
         <%= f.label :contraseña_actual %>
         <%= f.password_field :current_password, class: 'form-control' %>
       </div>
     </fieldset>
-    <%= f.submit 'Update', :class => 'button right' %>
+    <%= f.submit 'Guardar', :class => 'button right' %>
   <% end %>
 </div>
 <div class="authform">
