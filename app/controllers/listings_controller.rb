@@ -58,7 +58,7 @@ class ListingsController < ApplicationController
     end
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+        format.html { redirect_to @listing, notice: 'Se guardó la publicación' }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit }
@@ -70,9 +70,9 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   # DELETE /listings/1.json
   def destroy
-    @listing.destroy
+    listing.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Se borró la publicación' }
       format.json { head :no_content }
     end
   end

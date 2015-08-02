@@ -5,7 +5,9 @@
     = link_to :back
       span.glyphicon.glyphicon-chevron-left aria-hidden="true"
         | Volver
-    = link_to 'Editar', edit_listing_path(@listing), { class: 'btn btn-default pull-right' }
+    - if @listing.user == current_user
+      = link_to 'Eliminar', listing_path(@listing), { class: 'btn btn-default pull-right', method: 'delete' }
+      = link_to 'Editar', edit_listing_path(@listing), { class: 'btn btn-default pull-right' }
 .row.show-prudct
   .col-md-3.tumb
     = image_tag(@listing.pictures.first.picture, class: 'img-panel')

@@ -24,6 +24,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top
           li
             = link_to 'Mi Cuenta', edit_user_registration_path
           li
+            = link_to 'Mis Productos', products_path
+          li
             = link_to 'Cerrar sesión', destroy_user_session_path, :method=>'delete'
         - else
           li

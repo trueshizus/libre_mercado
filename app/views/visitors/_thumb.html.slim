@@ -7,6 +7,8 @@
     h4
       - if preview.has_attribute? :title
         = preview.title
+      - else
+        = preview.listing.title
     - if offer_enable
       span.label.label-warning
         = text

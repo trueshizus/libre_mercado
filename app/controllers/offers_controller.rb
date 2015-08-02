@@ -1,4 +1,4 @@
-class OffersController < ApplicationController
+ class OffersController < ApplicationController
   include Commentable
   before_action :offer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -27,7 +27,6 @@ class OffersController < ApplicationController
 
   def offer_product
     create_offer
-    # debugger
     product = Product.find(params[:product_id])
     offer.update_attributes(description: product.description)
     product.pictures.each do |file|
@@ -63,6 +62,7 @@ class OffersController < ApplicationController
   # POST /offers.json
   def create
     create_offer
+    return punless params[:offer][:files].present?
     params[:offer][:files].each do |file|
       Picture.create(picture: file, imageable: offer)
     end

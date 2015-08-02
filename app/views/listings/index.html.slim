@@ -1,27 +1,5 @@
-h1 Listings
-- if @all_listings.present?
-  table
-    thead
-      th
-        td Título
-        td Descripción
-        td Ver
-        td Acciones
-    tbody
-      - @all_listings.each do |listing|
-        tr
-          td = listing.title
-          td = listing.description
-          td = link_to 'Show', listing
-          td
-            - if listing.user == current_user
-              = link_to 'Edit', edit_listing_path(listing)
-              = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
-  br
-- else
-  .alert.alert-info role="alert"
-    a.alert-link href="#"  No se encontraron publicaciones
-
-= link_to 'New Listing', new_listing_path
-
+h2.page-header.title-blue Todas las publicaciones
+.row
+  - @all_listings.each do |preview|
+    = render partial: 'visitors/thumb', locals: { preview: preview, offer_enable: false }
 = paginate @all_listings
