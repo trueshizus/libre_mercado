@@ -14,14 +14,18 @@
             = 'Precio: ' + offer.price.to_s
           td = link_to 'Ver', offer
           td
-            | |
+            | | 
           td = link_to 'Rechazar', reject_form_offer_path(offer)
           td
-            | |
+            | | 
+          td
+            = link_to 'Aceptar', accept_offer_path(offer), method: :put
+          td
+            | | 
           -if offer.user == current_user
             td = link_to 'Editar', edit_offer_path(offer)
             td
-              | |
+              | | 
             td = link_to 'Eliminar', offer, data: {:confirm => 'Are you sure?'}, :method => :delete
 = paginate offers
 

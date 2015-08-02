@@ -24,8 +24,17 @@ class OffersController < ApplicationController
   end
 
   def accept
+    # Change the status of all the other offers
+    other_offers = offer.listing.offers
+    other_offers.each do |of|
+      if of != offer
+        of.update_attributes!(status: :not_accepted)
+      end
+    end
     offer.update_attributes!(status: :accepted)
-    redirect_to listings_path
+    UserMailer.accepted_offer_email(offer.user).deliver_later
+    # Listin status = pending
+    offer.listing.update_attributes!(status: :pending)
   end
 
   def reject
@@ -41,10 +50,12 @@ class OffersController < ApplicationController
                                           status: :pending))
     listing = Listing.find(params[:listing_id])
     UserMailer.new_offer_email(listing.user).deliver_later
-    params[:offer][:files].each do |file|
-      Picture.create(picture: file, imageable: @offer)
+    if params[:offer][:files].present?
+      uploader = PictureUploader.new
+      params[:offer][:files].each do |file|
+        Picture.create(picture: file, imageable: @offer)
+      end
     end
-
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
