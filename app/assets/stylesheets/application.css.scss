@@ -116,3 +116,14 @@ h3 {
   padding: 0 50px;
 }
 
+.form-input {
+  padding-left: 15px;
+}
+
+.form-input-tag {
+  .selectize-dropdown, .selectize-input {
+    height: 50px;
+    line-height: 40px;
+  }
+  padding: 0;
+}

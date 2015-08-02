@@ -2,7 +2,7 @@
   .row
     .col-md-6.col-md-offset-3
       h1.section-title.text-center
-        | Publicar búsqueda
+        | Nueva Publicación
       = form_for(@listing) do |f|
         .row
           = f.label 'Título', class: 'form-label login-label'
@@ -13,9 +13,13 @@
           .text-center
             = f.text_area :description, class: 'input form-input form-text-area'
         .row
-          = f.label 'tags', class: 'form-label login-label'
-          .text-center.form-input
-            = f.text_field :tag_list, class: 'input form-input'
+          = f.label 'Tags', class: 'form-label login-label'
+          .text-center.form-input-tag
+            = f.text_field :tag_list, class: 'input'
+        .row
+          = f.label 'Fotos', class: 'form-label login-label'
+          .text-center.form-input-tag
+            = f.file_field :files, multiple: true
         / div
         /   = f.label :password, class: 'form-label login-label'
         /   .text-center
