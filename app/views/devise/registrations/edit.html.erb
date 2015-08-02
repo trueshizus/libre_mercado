@@ -21,6 +21,14 @@
       </div>
     </fieldset>
     <div class="form-group">
+      <%= f.label :nombre %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :apellido %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
         <%= f.label :direccion %>
         <%= f.text_field :address, :autocomplete => 'off', class: 'form-control' %>
       </div>
