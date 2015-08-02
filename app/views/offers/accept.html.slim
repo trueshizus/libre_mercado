@@ -1,5 +1,24 @@
-h2 estos son los datos del vendedor
-h3
-  | Email: 
-  = @offer.user.email
+.container-fluid
+  .text-center
+    h1 Felicitaciones!!!
+    h2 Conseguiste lo que buscabas!
+  br
+  h3 Estos son los datos del vendedor, ponete en contacto con él y lleva a cabo la compra.
+  h3
+    b Email:
+    = " " + @offer.user.email
+    br
+    b Nombre:
+    = " #{@offer.user.first_name} #{@offer.user.last_name}"
+    br
+    b Teléfono:
+    =  " " + @offer.user.telephone.to_s
+    br
+    b Ubicaciones:
+    =  " " + @offer.user.places.to_s
+  h3
+    | Mucha Suerte,
+    br
+    | El Equipo de
+    strong &nbsp; LibreMercado
 
