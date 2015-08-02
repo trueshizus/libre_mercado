@@ -10,8 +10,17 @@ AllCops:
 Documentation:
   Enabled: false
 
-LineLength:
-  Max: 99
-
 HasAndBelongsToMany:
   Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+LineLength:
+  Max: 99
