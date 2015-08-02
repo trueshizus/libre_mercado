@@ -15,8 +15,9 @@ table
         td = listing.title
         td = listing.description
         td = link_to 'Show', listing
-        td = link_to 'Edit', edit_listing_path(listing)
-        td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+        - if listing.user == current_user
+          td = link_to 'Edit', edit_listing_path(listing)
+          td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 

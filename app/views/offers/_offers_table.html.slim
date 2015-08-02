@@ -9,20 +9,20 @@
           h4
             = offer.description
           h5
-            = 'Usuario: ' + offer.user.first_name + ' '+ offer.user.last_name
+            = 'Usuario: ' + offer.user.first_name + ' ' + offer.user.last_name
           h5
             = 'Precio: ' + offer.price.to_s
           td = link_to 'Ver', offer
-          td
-            | | 
-          td = link_to 'Rechazar', reject_form_offer_path(offer)
-          td
-            | | 
-          td
-            = link_to 'Aceptar', accept_offer_path(offer), method: :put
-          td
-            | | 
-          -if offer.user == current_user
+          - if offer.user != current_user
+            td
+              | | 
+            td = link_to 'Rechazar', reject_form_offer_path(offer)
+            td
+              | | 
+            td
+              = link_to 'Aceptar', accept_offer_path(offer), method: :put
+            td             
+          - else
             td = link_to 'Editar', edit_offer_path(offer)
             td
               | | 
