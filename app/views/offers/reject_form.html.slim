@@ -5,7 +5,8 @@
       | Dejale un mensaje al vendedor. Recordá ser amable y dar consejos sobre como puede mejorar su oferta!
     h4
       | Recordá que una vez que rechaces esta oferta no podrás aceptarla en el futuro.
+    .form-group
+      = text_area_tag(:feedback, "", size: "100x6", class: 'form-control')
     .row
-      = text_area_tag(:feedback, "", size: "100x6")
-    .row
-      = submit_tag("Enviar")
+      = submit_tag("Enviar"), class: 'btn btn-default pull-right'
+

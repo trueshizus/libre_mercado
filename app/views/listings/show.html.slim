@@ -1,13 +1,15 @@
 .row
   p#notice = notice
 .row
-  = link_to :back
-    span.glyphicon.glyphicon-chevron-left aria-hidden="true"
-      | Volver
+  .col-md-12
+    = link_to :back
+      span.glyphicon.glyphicon-chevron-left aria-hidden="true"
+        | Volver
+    = link_to 'Editar', edit_listing_path(@listing), { class: 'btn btn-default pull-right' }
 .row.show-prudct
-  .col-md-4
+  .col-md-3.tumb
     = image_tag(@listing.pictures.first.picture, class: 'img-panel')
-  .col-md-8
+  .col-md-9
     h3
       = @listing.title
     p
@@ -20,15 +22,17 @@
       .col-md-4
         - if user_signed_in?
             - if @listing.user != current_user && current_user.can_offer?(@listing)
-              = link_to 'Ofertar', new_offer_path(listing: @listing), {class: 'btn btn-warning btn-lg'}
+              = link_to 'Ofertar', new_offer_path(listing: @listing), {class: 'btn btn-warning btn-lg pull-right'}
         - else
-            = link_to 'Ofertar', new_offer_path(listing: @listing), {class: 'btn btn-warning btn-lg'}
+            = link_to 'Ofertar', new_offer_path(listing: @listing), {class: 'btn btn-warning btn-lg pull-right'}
 
 - if @listing.user == current_user
-  h2.page-header.title-blue Ofertas recibidas
-  - if @offers_for_listing.present?
-    - @offers_for_listing.each do |preview|
-      = render partial: 'visitors/thumb', locals: { preview: preview, offer_enable: preview.comments.present?, text: "¡Hay respuesta!"}
-  - else
-    .alert.alert-info role="alert"
-      | Aun no has recibido ninguna oferta :(
+  .row
+    h2.page-header.title-blue Ofertas recibidas
+    - if @offers_for_listing.present?
+      - @offers_for_listing.each do |preview|
+        - unless preview.rejected?
+          = render partial: 'visitors/thumb', locals: { preview: preview, offer_enable: preview.comments.present?, text: "¡Hay respuesta!"}
+    - else
+      .alert.alert-info role="alert"
+        | Aun no has recibido ninguna oferta :(

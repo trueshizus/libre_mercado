@@ -1,8 +1,13 @@
 .media-body
-  h4.media-heading=comment.author.first_name + ' ' + comment.author.last_name
-  i= comment.created_at.strftime('%b %d, %Y at %H:%M')
-  p= simple_format comment.body
-  = nested_comments comment.children
-.actions
-  = link_to "Reply", new_polymorphic_path([@commentable, Comment.new], :parent_id => comment)
-= nested_comments comment.children
+  .row
+    .col-md-6
+      p.media-heading
+        strong
+          = comment.author.first_name + ' ' + comment.author.last_name
+        | &nbsp; dice:
+    .col-md-6.text-right
+      i= comment.created_at.strftime('%b %d, %Y at %H:%M')
+  .row
+    .col-md-12
+      p= simple_format comment.body
+

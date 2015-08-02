@@ -1,19 +1,35 @@
-p#notice = notice
+.row
+  p#notice = notice
+.row
+  .col-md-12
+    = link_to :back
+      span.glyphicon.glyphicon-chevron-left aria-hidden="true"
+        | Volver
 
-p
-  strong Description:
-  = @offer.description
-p
-  strong Price:
-  = @offer.price
-p
-  - if @offer.pictures.present?
-    strong
-      | Fotos:
-    - @offer.pictures.each do |pic|
-      = image_tag(pic.picture, size: '100x100')
+h1.text-center
+  | Oferta
+.row.show-prudct
+  .row
+    .col-md-3.tumb
+       = image_tag(@offer.pictures.first.picture, class: 'img-panel')
+    .col-md-6
+      .offer-description
+        = @offer.description
 
-= link_to 'Editar', edit_offer_path(@offer)
+    .col-md-3
+      .row
+        h3.text-left
+          strong
+            = " $ #{@offer.price}"
+      .row
+        = link_to "Aceptar", accept_offer_path(@offer), class: 'btn btn-success pull-right btn-block'
+      br
+      .row
+        = link_to "Rechazar", reject_form_offer_path(@offer), class: 'btn btn-default pull-right btn-block'
 
-= nested_comments @offer.comments
-= render "comments/form"
+.row
+  = render "comments/form"
+br
+.row
+  = nested_comments @offer.comments
+.row
